@@ -1,2 +1,0 @@
-FOR C++: g++ -std=gnu++0x CV.cpp
-FOR PYTHON: python CV.py
