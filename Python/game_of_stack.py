@@ -2,10 +2,15 @@
 
 from collections import deque, namedtuple
 from prettytable import PrettyTable
+import time
 
 stack = deque()
 t = PrettyTable(['Address', 'Value'])
-option = 0;
+#f = open("data_in")
+#g = open("data_out", 'w')
+#data = f.read()
+#data = data.split()
+option = counter = 0;
 addr = 0x0
 READ = 1;DUP = 2;ADD = 3;MUL = 4;WRITE = 5;PRINT = 6;EXIT = 7;
 
@@ -38,11 +43,14 @@ def menu():
     print '= [7]EXIT'
 
 if __name__ == "__main__":
+    #start_time = time.time()
     welcome()
 
     while True:
         menu()
         option = raw_input(">>")
+        #option = data[counter]
+        #counter += 1
         if len(option) == 0:
             print '\n= [*]Unknown option, enter on of the above.\n'
             continue
@@ -51,8 +59,10 @@ if __name__ == "__main__":
         # PUSH <integer> pushes <integer> on the stack;
         if option == READ:
             value = raw_input("\n= [*]Enter a value: ")
+            #value = data[counter]
+            #counter += 1
             print '\n'
-            if not is_number(value):
+            if not is_number(value ):
                 print '\n= [*]Please enter a valid integer\n'
                 continue
             else:
@@ -111,6 +121,8 @@ if __name__ == "__main__":
 
         # EXIT
         elif option == EXIT:
+
+            #g.write("--- %s seconds ---" % (time.time() - start_time))
             print '\n= [*]Bye-Bye!\n'
             break
 
