@@ -1,8 +1,14 @@
 #include <iostream>
 #include <stdlib.h>
 #include <string.h>
+#include <fstream>
+#include <chrono>
+#include <time.h>
+#include <stdio.h>
 
 using namespace std;
+ifstream fin ("data.in");
+ofstream fout ("data.out");
 
 struct stack_CHUNK{
     stack_CHUNK *FD;
@@ -95,6 +101,7 @@ void interactive_menu(){
     cout << "[7] EXIT"<< endl;
 
     cout << ">> ";cin >> option;
+    //fin >> option;
 }
 
 // 1. PUSH <integer> pushes <integer> on the stack;
@@ -154,6 +161,7 @@ void stk_mul(){
 void stk_read(){
   size_t aux;
   cout << endl << "[*] Enter the value to push to stak: ";cin >> aux;
+  //fin >> aux;
   create_stack_element(aux);
 }
 
@@ -174,6 +182,8 @@ void stk_write(){
 }
 
 int main(){
+    //auto start = std::chrono::high_resolution_clock::now();
+    //unsigned t0=clock(),t1;
     init();
     size_t aux;
     // Take action
@@ -200,6 +210,8 @@ int main(){
                 break;
             case 7:
                 cout << "[*] Good-Bye!" << endl;
+                //t1=clock()-t0;
+                //fout<<"Milliseconds: "<<t1;
                 exit(0);
                 break;
             default:
@@ -209,5 +221,7 @@ int main(){
         // PRINT STACK
         //print_stack();
     }
-
+    //auto finish = high_resolution_clock::now();
+    //fout<<"Duration: "<<finish;
+    return 0;
 }
